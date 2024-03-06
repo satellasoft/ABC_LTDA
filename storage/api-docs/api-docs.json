@@ -1,0 +1,141 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ABC LTDA Store API",
+        "description": "The complete API to manager store ABC LTDA",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api",
+            "description": "Localhost API"
+        }
+    ],
+    "paths": {
+        "/product/list": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get a list of products",
+                "operationId": "0398afd0f95a4512d10707f30ed6b07d",
+                "parameters": [
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Number of items per page",
+                        "schema": {
+                            "type": "integer",
+                            "default": 10
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number",
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProductFilterResource"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ProductFilterResource": {
+                "title": "Product data Struct",
+                "type": "object",
+                "allOf": [
+                    {
+                        "properties": {
+                            "data": {
+                                "type": "array",
+                                "items": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "Product id",
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "description": "Product name",
+                                            "type": "string",
+                                            "example": "Iphone"
+                                        },
+                                        "description": {
+                                            "description": "Complete product description",
+                                            "type": "string",
+                                            "format": "string",
+                                            "example": "Iphone. 8GB..."
+                                        },
+                                        "price": {
+                                            "description": "Product princing",
+                                            "type": "decimal",
+                                            "format": "decimal",
+                                            "example": "1599.98"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2024-03-05 08:00:00"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2024-03-05 08:00:00"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "pagination": {
+                                "properties": {
+                                    "rowsPerPage": {
+                                        "type": "integer",
+                                        "format": "integer",
+                                        "example": 10
+                                    },
+                                    "page": {
+                                        "type": "integer",
+                                        "format": "integer",
+                                        "example": 1
+                                    },
+                                    "rowsNumber": {
+                                        "type": "integer",
+                                        "format": "integer",
+                                        "example": 10
+                                    },
+                                    "total": {
+                                        "type": "integer",
+                                        "format": "integer",
+                                        "example": 10
+                                    }
+                                },
+                                "type": "object",
+                                "format": "object"
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            }
+        }
+    }
+}
