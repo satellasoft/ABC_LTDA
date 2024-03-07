@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SalesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('product')->group(function () {
     Route::get('/list', [ProductController::class, 'filter'])->name('product.filter');
+});
+
+Route::prefix('sales')->group(function () {
+    Route::get('/list', [SalesController::class, 'filter'])->name('sales.filter');
+    Route::post('/', [SalesController::class, 'store'])->name('sales.store');
+    Route::get('/{id}', [SalesController::class, 'show'])->name('sales.show')->whereNumber('id');
+    Route::put('/{id}/cancel', [SalesController::class, 'cancel'])->name('sales.cancel')->whereNumber('id');
+    Route::post('/new_item', [SalesController::class, 'newItem'])->name('sales.new_item')->whereNumber('id');
 });

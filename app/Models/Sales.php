@@ -5,20 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Sales extends Model
 {
     use HasFactory;
 
     protected $table = 'products';
 
-    const NAME = 'name';
-    const DESCRIPTION = 'description';
-    const PRICE = 'price';
+    const ID = 'id';
+    const SALES_ID = 'sales_id';
+    const AMOUNT = 'amount';
 
     protected $fillable = [
-        self::NAME,
-        self::DESCRIPTION,
-        self::PRICE
+        self::ID,
+        self::SALES_ID,
+        self::AMOUNT
     ];
 
     public function products()
