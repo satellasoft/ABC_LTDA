@@ -9,7 +9,7 @@ class Sales extends Model
 {
     use HasFactory;
 
-    protected $table = 'products';
+    protected $table = 'sales';
 
     const ID = 'id';
     const SALES_ID = 'sales_id';
@@ -21,9 +21,19 @@ class Sales extends Model
         self::AMOUNT
     ];
 
-    public function products()
+    public static function getRandomNumber(int $length = 5): int
     {
-        return $this->belongsToMany(Product::class, 'product_sales')
-            ->withPivot(ProductSales::AMOUNT, ProductSales::PRICE);
+        $sequence = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $sequence .= mt_rand(0, 1);
+        }
+
+        return $sequence;
+    }
+
+    public function productSales()
+    {
+        return $this->hasMany(ProductSales::class, 'sales_id');
     }
 }

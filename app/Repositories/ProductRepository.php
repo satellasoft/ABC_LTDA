@@ -12,4 +12,11 @@ class ProductRepository
             ->latest()
             ->paginate(perPage: $params['per_page'], page: $params['page']);
     }
+
+    public function getPrice(int $productId): ?float
+    {
+        $product =  Product::select('price')->where('id', $productId)->first();
+
+        return $product->price ?? null;
+    }
 }

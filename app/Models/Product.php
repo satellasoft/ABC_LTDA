@@ -11,6 +11,7 @@ class Product extends Model
 
     protected $table = 'products';
 
+    const ID = 'id';
     const NAME = 'name';
     const DESCRIPTION = 'description';
     const PRICE = 'price';
@@ -21,9 +22,8 @@ class Product extends Model
         self::PRICE
     ];
 
-    public function products()
+    public function productSales()
     {
-        return $this->belongsToMany(Product::class, 'product_sales')
-            ->withPivot(ProductSales::AMOUNT, ProductSales::PRICE);
+        return $this->hasMany(ProductSales::class, 'product_id');
     }
 }
