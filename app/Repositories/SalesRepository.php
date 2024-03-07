@@ -61,4 +61,9 @@ class SalesRepository
             return false;
         }
     }
+
+    public function getById(int $salesId)
+    {
+        return Sales::find($salesId);
+    }
 }
