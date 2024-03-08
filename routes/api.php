@@ -28,6 +28,6 @@ Route::prefix('sales')->group(function () {
     Route::get('/list', [SalesController::class, 'filter'])->name('sales.filter');
     Route::post('/', [SalesController::class, 'store'])->name('sales.store');
     Route::get('/{id}', [SalesController::class, 'show'])->name('sales.show')->whereNumber('id');
-    Route::put('/{id}/cancel', [SalesController::class, 'cancel'])->name('sales.cancel')->whereNumber('id');
-    Route::post('/new_item', [SalesController::class, 'newItem'])->name('sales.new_item')->whereNumber('id');
+    Route::put('/{sales_id}/cancel', [SalesController::class, 'cancel'])->name('sales.cancel')->whereNumber('sales_id');
+    Route::post('/{sales_id}/add', [SalesController::class, 'add'])->name('sales.add')->whereNumber('sales_id');
 });

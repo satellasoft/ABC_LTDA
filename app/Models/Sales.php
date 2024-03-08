@@ -16,6 +16,9 @@ class Sales extends Model
     const AMOUNT = 'amount';
     const STATUS = 'status';
 
+    const STATUS_ACTIVE = 1;
+    const STATUS_DISABLED = 2;
+
     protected $fillable = [
         self::ID,
         self::SALES_ID,
