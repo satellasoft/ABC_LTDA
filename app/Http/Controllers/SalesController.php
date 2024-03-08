@@ -7,6 +7,9 @@ use App\Http\Resources\Sales\SalesResource;
 use App\Models\Sales;
 use App\Repositories\SalesRepository;
 
+//reused
+use App\Http\Requests\Product\ProductFilterRequest;
+
 class SalesController extends Controller
 {
     /**
@@ -78,5 +81,12 @@ class SalesController extends Controller
             return response()->json(['message' => 'Failed to add items'], 500);
 
         return response()->json(['message' => 'Items added successfully'], 200);
+    }
+
+    public function filter(ProductFilterRequest $request): \Illuminate\Http\JsonResponse
+    {
+        $sales = $this->salesRepository->filter($request->validated());
+
+        return  SalesResource::collection($sales)->response();
     }
 }

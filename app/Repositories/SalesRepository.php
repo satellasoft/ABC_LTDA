@@ -113,4 +113,11 @@ class SalesRepository
             return false;
         }
     }
+
+    public function filter(array $params)
+    {
+        return Sales::query()
+            ->latest()
+            ->paginate(perPage: $params['per_page'], page: $params['page']);
+    }
 }
