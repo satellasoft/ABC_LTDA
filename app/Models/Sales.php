@@ -14,11 +14,13 @@ class Sales extends Model
     const ID = 'id';
     const SALES_ID = 'sales_id';
     const AMOUNT = 'amount';
+    const STATUS = 'status';
 
     protected $fillable = [
         self::ID,
         self::SALES_ID,
-        self::AMOUNT
+        self::AMOUNT,
+        self::STATUS
     ];
 
     public static function getRandomNumber(int $length = 5): int

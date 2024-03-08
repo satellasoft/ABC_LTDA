@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('sales_id');
             $table->decimal('amount', 10, 2);
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

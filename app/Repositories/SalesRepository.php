@@ -17,7 +17,8 @@ class SalesRepository
 
             $sales = Sales::create([
                 'sales_id' =>  sprintf('%s%s', date('Y'), Sales::getRandomNumber(5)),
-                'amount' => 0
+                'amount'   => 0,
+                'status'   => 1
             ]);
 
             $productRepository = new ProductRepository();
