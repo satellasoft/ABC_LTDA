@@ -27,6 +27,14 @@ All endspoint with documentation params is be here "**docs\Insomnia_2024-03-08.j
 ]
 ```
 
+## Run unit test and features
+
+To execute test, just run cli command bellow.
+
+```
+php artisan test
+```
+
 ## Swagger Documentation
 
 **Endpoint**: api/documentation
